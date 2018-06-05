@@ -1,17 +1,80 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
+  <ion-navbar padding class ="home" color="light">
+    <ion-title light>Home</ion-title>
   </ion-navbar>
 </ion-header>
+<ion-content padding class="titlepercentiel">
+    <ion-grid >
+        <ion-row>
+            <ion-col col-md-5 col-12 push-md-7 [ngClass]="{'hidden': !showUitleg}">
+                Hier komt een beetje uitleg
+                <button class="hideDesktop" ion-button (click)="showCalculator()">Klik hier</button>
+            </ion-col> 
+            <ion-col #calculatorColumn id="calculatorColumn" [ngClass]="{'show': showCalc}" col-md-6 col-12 offset-md-1 pull-md-6>
+            
+              <h2>Percentiel calculator</h2>
+                <ion-item>
+            </ion-item>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+
+            <form [formGroup]="CalculatorForm">
+
+              <ion-item>
+                <ion-label floating>CAC score</ion-label>
+                <ion-input name="cacScore" [formControl]="CalculatorForm.controls['cacScore']"
+                    type="number"></ion-input>
+              </ion-item>
+              
+              <ion-item>
+                <ion-label floating>Age</ion-label>
+                <ion-input name="age" [formControl]="CalculatorForm.controls['age']"
+                    type="number"></ion-input>
+              </ion-item>      
+
+              <ion-item>
+                    <ion-label>Gender</ion-label>
+                  <ion-select [formControl]="CalculatorForm.controls['gender']">
+                    <ion-option value="f">Female</ion-option>
+                    <ion-option value="m">Male</ion-option>
+                  </ion-select>
+              </ion-item>      
+
+              <ion-item>
+                    <ion-label>Ethnicity</ion-label>
+                  <ion-select [formControl]="CalculatorForm.controls['ethnicity']">
+                    <ion-option value="mixed">Mixed USA & Caucasian</ion-option>
+                    <ion-option value="asian">Asian</ion-option>
+                  </ion-select>
+              </ion-item>    
+
+
+              <ion-row>
+                <ion-col text-center>
+                  <button ion-button block color="secondary" (click)="calculate()">
+                    Calculate
+                  </button>
+                </ion-col>
+              </ion-row>
+
+
+            </form>
+            <h2>{{percentiel}}</h2>            
+            </ion-col>
+            
+        </ion-row>
+    </ion-grid>
 </ion-content>
+<!--
+<!DOCTYPE html>
+    <html>
+        <head>
+            <title>Calculator</title>
+            
+            <link rel="stylesheet" link href="styles.css"/>
+            <script type ="text/javascript" scr="jquery-3.2.1.min.js"></script>
+            <script src="script.js"></script>      
+        </head>
+        <body>
+            
+        </body>
+    </html>-->

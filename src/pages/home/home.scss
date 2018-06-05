@@ -1,3 +1,25 @@
-page-home {
+page-home { 
+  .titlepercentiel {
+  text-align: center;
+  }
+
+  @media screen and (max-width: map-get($grid-breakpoints, md)) {
+    #calculatorColumn { 
+    	display: none;
+    	&.show {
+    		display: block !important;
+    	}
+    }
+}
+@media screen and(min-width: map-get($grid-breakpoints, md)) {
+	.hideDesktop {
+		display: none;
+	}
+}
+
+.hidden { 
+	display: none;
+}
+
 
 }
